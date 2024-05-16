@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    User Dashboard
+{% endblock %}
+
+{% block style %}
+  <style>
+    .bttn{
+      background-color: darkgreen;
+      color: greenyellow;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+
+<br><h1>User Dashboard</h1>
+<br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Book Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Section</th>
+        <th scope="col">Request Book</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in books %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.author}}</td>
+        <td>{{i.section_name}}</td>
+        <td><form class="form-inline my-2 my-lg-0" method="post" action="{{ url_for('request_book') }}">
+          <input type = "hidden" value="{{i.id}}" name = book_id>
+          <input type = "hidden" value="{{current_user.id}}" name = user_id>
+          <input type="number" name="Ndays" placeholder="Number of days" required>
+          <input class="bttn" type = "submit" value="Request">
+        </form></td>        
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

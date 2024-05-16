@@ -1,0 +1,26 @@
+{% extends 'adbase.html' %}
+
+{% block title %}
+    User Statistics
+{% endblock title %}
+    
+{% block body %}
+<h1>Library Statistics</h1>
+    <ul>
+        <li>Total Books: {{ total_books }}</li>
+        <li>Books Issued: {{ books_issued }}</li>
+        <li>Books Available: {{ total_books - books_issued }}</li>
+    </ul>
+    <br>
+    
+    <h2>Books by Section:</h2>
+    <ul>
+        {% for section in sections %}
+            <li>{{ section.name }}: {{ section.books_count }}</li>
+            <ul>
+                <li>Books Issued: {{ section.books_issued_count }}</li>
+                <li>Books Available in Section: {{ section.books_count - section.books_issued_count }}</li>
+            </ul>
+        {% endfor %}
+    </ul>
+{% endblock body %}

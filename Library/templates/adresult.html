@@ -1,0 +1,46 @@
+{% extends 'adbase.html' %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block style %}
+  <style>
+    h1{
+        text-align: center;
+      }
+  </style>
+{% endblock %}
+
+{% block body %}
+
+<br><h1>Search Results</h1>
+<br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Book Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Section</th>
+        <th scope="col">Content Description</th>
+        <th scope="col">Update Book</th>
+        <th scope="col">Delete Book</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in book %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.author}}</td>
+        <td>{{i.section_name}}</td>
+        <td>{{i.content}}</td>
+        <td><a href="/updatebook/{{i.id}}" class = "btn btn outline-secondary btn-sm">Update Book</a></td>
+        <td><a href="/deletebook/{{i.id}}" class = "btn btn outline-secondary btn-sm">Delete Book</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

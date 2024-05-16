@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    User Statistics
+{% endblock title %}
+    
+{% block body %}
+<h1>User Statistics</h1>
+<h2>{{ current_user.username }}</h2>
+<ul>
+    <li>Books with Pending Requests: {{ total_books_requested - books_borrowed }}</li>
+    <li>Books Currently Borrowed: {{ books_borrowed }}</li>
+</ul>
+{% endblock body %}

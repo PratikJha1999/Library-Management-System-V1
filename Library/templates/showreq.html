@@ -1,0 +1,47 @@
+{% extends 'adbase.html' %}
+
+{% block title %}
+  Requested Books
+{% endblock %}
+
+{% block style %}
+<style>
+  h1{
+    text-align: center;
+  }
+</style>
+{% endblock style %}  
+{% block body %}
+
+<br><h1>Requested Books</h1>
+<br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Bookname</th>
+        <th scope="col">Author</th>
+        <th scope="col">Section</th>
+        <th scope="col">Requested By</th>
+        <th scope="col">Date Requested</th>
+        <th scope="col">No. of days requested for</th>
+        <th scope="col">Approve/reject</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in breq %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{i.books.name}}</td>
+          <td>{{i.books.author}}</td>
+          <td>{{i.books.section_name}}</td>
+          <td>{{i.users.username}}</td>
+          <td>{{i.date_requested.strftime('%d/%m/%Y')}}</td>
+          <td>{{i.Ndays}}</td>
+          <td><a href="/approvereq/{{i.id}}" class = "btn btn outline-secondary btn-sm">Approve</a>    <a href="/denyreq/{{i.id}}" class = "btn btn outline-secondary btn-sm">Deny</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

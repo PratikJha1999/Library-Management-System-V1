@@ -1,0 +1,23 @@
+{% extends 'adbase.html' %}
+
+{% block title %}
+    Update Section
+{% endblock title %}
+
+{% block body %}
+<div class="container my-3">
+    <h1>Update Section</h1>
+    <form method="post">
+        <div class = "mb-3">
+            <label for="name" class = "form-label">Section Name:</label><br>
+            <input type="text" name="name" id="" placeholder="Section Name" class = "form-control" value="{{ update_sec.name }}">
+        </div><br>
+        <div class = "mb-3">
+            <label for="desc" class = "form-label">Section Description:</label><br>
+            <input type="text" class = "form-control" name="desc" id="" placeholder="Section Description" value="{{ update_sec.desc }}">
+        </div><br>
+        <button type="submit" class = "btn btn-primary">Submit</button>        
+    </form>
+</div>
+
+{% endblock body %}

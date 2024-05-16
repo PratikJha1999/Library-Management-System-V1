@@ -1,0 +1,35 @@
+{% extends 'adbase.html' %}
+
+{% block title %}
+    Update Book
+{% endblock title %}
+
+{% block body %}
+<div class="container my-3">
+    <h1>Update Book</h1>
+    <form method="post">
+        <div class = "mb-3">
+            <label for="name" class = "form-label">New Book Name:</label><br>
+            <input type="text" name="name" id="" placeholder="New Book Name" class = "form-control" value="{{ update_book.name }}">
+        </div><br>
+        <div class = "mb-3">
+            <label for="author" class = "form-label">New Book Author:</label><br>
+            <input type="text" class = "form-control" name="author" id="" placeholder="Book Author Name" value="{{ update_book.author }}">
+        </div><br>
+        <div class = "mb-3">
+            <label for="content" class = "form-label">New Book Content:</label><br>
+            <input type="text" class = "form-control" name="content" id="" placeholder="Book Content" value="{{ update_book.content }}">
+        </div><br>
+        <div class="form-group">
+            <label for="section">New Section</label>
+            <select class="form-control" id="section" name="section">
+                {% for section in section %}
+                <option value="{{ section.name }}" {% if section.name == update_book.section_name %} selected {% endif %}>{{ section.name }}</option>
+                {% endfor %}
+            </select>
+        </div><br>
+        <button type="submit" class = "btn btn-primary">Update Book</button>        
+    </form>
+</div>
+
+{% endblock body %}

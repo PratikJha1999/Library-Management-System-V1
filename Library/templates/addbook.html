@@ -1,0 +1,38 @@
+{% extends 'adbase.html' %}
+
+{% block title %}
+    Add New Book
+{% endblock title %}
+{% block style %}
+<style>
+  h1{
+    text-align: center;
+  }
+  .content-input{
+    height: 150px; 
+    resize: vertical;
+  }
+</style>
+{% endblock style %}  
+
+{% block body %}
+<div class="container my-3">
+    <h1>Add New Book</h1>
+    <form method="post">
+        <div class = "mb-3">
+            <label for="bname" class = "form-label">Book Name:</label><br>
+            <input type="text" name="bname" id="" placeholder="Book Name" class = "form-control">
+        </div><br>
+        <div class = "mb-3">
+            <label for="author" class = "form-label">Book Author:</label><br>
+            <input type="text" class = "form-control" name="author" id="" placeholder="Book Author Name">
+        </div><br>
+        <div class = "mb-3">
+            <label for="content" class = "form-label">Book Description:</label><br>
+            <input type="text" class = "form-control content-input" name="content" id="" placeholder="Book Description">
+        </div><br>
+        <button type="submit" class = "btn btn-primary">Submit</button>        
+    </form>
+</div>
+
+{% endblock body %}

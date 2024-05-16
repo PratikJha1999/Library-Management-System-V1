@@ -1,0 +1,49 @@
+{% extends 'adbase.html' %}
+
+{% block title %}
+  Books Issued
+{% endblock %}
+
+{% block style %}
+<style>
+  h1{
+    text-align: center;
+  }
+</style>
+{% endblock style %}  
+{% block body %}
+
+<br><h1>Books Issued</h1>
+<br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Bookname</th>
+        <th scope="col">Author</th>
+        <th scope="col">Section</th>
+        <th scope="col">Issued To</th>
+        <th scope="col">Date Issued</th>
+        <th scope="col">Return Date</th>
+        <th scope="col">Days issued for</th>
+        <th scope="col">Revoke Access</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in bissued %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{i.books.name}}</td>
+          <td>{{i.books.author}}</td>
+          <td>{{i.books.section_name}}</td>
+          <td>{{i.users.username}}</td>
+          <td>{{i.date_issued.strftime('%d/%m/%Y')}}</td>
+          <td>{{i.date_return.strftime('%d/%m/%Y')}}</td>
+          <td>{{i.Ndays}}</td>
+          <td><a href="/issuerevoke/{{i.id}}" class = "btn btn outline-secondary btn-sm">Revoke Access</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
